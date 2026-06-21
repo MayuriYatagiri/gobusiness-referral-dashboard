@@ -199,7 +199,7 @@ const Dashboard = () => {
           <div style={{ display: 'flex', gap: '30px', flexWrap: 'wrap', marginTop: '15px' }}>
             
             {/* Referral Link Flex Group */}
-            <div>
+            <div style={{ display: 'flex', flexDirection: 'column', minWidth: '280px' }}>
               <span style={{ display: 'block', fontWeight: 'bold', fontSize: '14px', marginBottom: '5px', color: 'var(--text-h)' }}>
                 Your Referral Link
               </span>
@@ -210,14 +210,14 @@ const Dashboard = () => {
                   type="text" 
                   readOnly 
                   value={shareData.link} 
-                  style={{ padding: '8px', width: '250px', border: '1px solid var(--border)', borderRadius: '4px', background: 'var(--code-bg)', color: 'var(--text)', boxSizing: 'border-box' }} 
+                  style={{ padding: '8px', flexGrow: 1, border: '1px solid var(--border)', borderRadius: '4px', background: 'var(--code-bg)', color: 'var(--text)', boxSizing: 'border-box' }} 
                 />
-                <button onClick={() => handleCopyText(shareData.link)} style={{ padding: '8px 12px', cursor: 'pointer', border: '1px solid var(--border)', borderRadius: '4px', background: 'var(--code-bg)', color: 'var(--text-h)', fontWeight: '500' }}>Copy</button>
+                <button onClick={() => handleCopyText(shareData.link)} style={{ padding: '8px 12px', cursor: 'pointer', border: '1px solid var(--border)', borderRadius: '4px', background: 'var(--code-bg)', color: 'var(--text-h)', fontWeight: '500', whiteSpace: 'nowrap' }}>Copy</button>
               </div>
             </div>
             
             {/* Referral Code Flex Group */}
-            <div>
+            <div style={{ display: 'flex', flexDirection: 'column', minWidth: '200px' }}>
               <span style={{ display: 'block', fontWeight: 'bold', fontSize: '14px', marginBottom: '5px', color: 'var(--text-h)' }}>
                 Your Referral Code
               </span>
@@ -228,15 +228,15 @@ const Dashboard = () => {
                   type="text" 
                   readOnly 
                   value={shareData.code} 
-                  style={{ padding: '8px', width: '150px', border: '1px solid var(--border)', borderRadius: '4px', background: 'var(--code-bg)', color: 'var(--text)', boxSizing: 'border-box' }} 
+                  style={{ padding: '8px', flexGrow: 1, border: '1px solid var(--border)', borderRadius: '4px', background: 'var(--code-bg)', color: 'var(--text)', boxSizing: 'border-box' }} 
                 />
-                <button onClick={() => handleCopyText(shareData.code)} style={{ padding: '8px 12px', cursor: 'pointer', border: '1px solid var(--border)', borderRadius: '4px', background: 'var(--code-bg)', color: 'var(--text-h)', fontWeight: '500' }}>Copy</button>
+                <button onClick={() => handleCopyText(shareData.code)} style={{ padding: '8px 12px', cursor: 'pointer', border: '1px solid var(--border)', borderRadius: '4px', background: 'var(--code-bg)', color: 'var(--text-h)', fontWeight: '500', whiteSpace: 'nowrap' }}>Copy</button>
               </div>
             </div>
 
           </div>
         </section>
-
+            
         {/* Complete Filterable Referrals Data Table */}
         <section style={{ margin: '30px 0', border: '1px solid var(--border)', padding: '20px', borderRadius: '6px', background: 'var(--bg)' }}>
           <h2 style={{ color: 'var(--text-h)' }}>All referrals</h2>
