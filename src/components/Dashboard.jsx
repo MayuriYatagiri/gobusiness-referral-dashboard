@@ -123,7 +123,6 @@ const Dashboard = () => {
         <a href="/" aria-label="Go to dashboard home" style={{ fontSize: '20px', fontWeight: 'bold', textDecoration: 'none', color: 'var(--text-h)' }}>Go Business</a>
         <nav aria-label="Primary" style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
           <a href="/" style={{ textDecoration: 'none', color: 'var(--accent)', fontWeight: 'bold' }}>Home</a>
-          {/* 🌟 FIXED: Logout button background and text contrast matches current theme */}
           <button 
             onClick={handleLogout} 
             style={{ 
@@ -197,36 +196,44 @@ const Dashboard = () => {
         {/* Referral Sharing Action Section */}
         <section aria-label="Share referral" style={{ margin: '30px 0', border: '1px solid var(--border)', padding: '20px', borderRadius: '6px', background: 'var(--bg)' }}>
           <h2 style={{ color: 'var(--text-h)' }}>Refer friends and earn more</h2>
-          <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', marginTop: '10px' }}>
+          <div style={{ display: 'flex', gap: '30px', flexWrap: 'wrap', marginTop: '15px' }}>
+            
+            {/* Referral Link Flex Group */}
             <div>
-              <label htmlFor="referralLinkInput" style={{ display: 'block', fontWeight: 'bold', fontSize: '14px', marginBottom: '5px', color: 'var(--text-h)' }}>
+              <span style={{ display: 'block', fontWeight: 'bold', fontSize: '14px', marginBottom: '5px', color: 'var(--text-h)' }}>
                 Your Referral Link
+              </span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <input 
                   id="referralLinkInput"
                   name="referralLink"
                   type="text" 
                   readOnly 
                   value={shareData.link} 
-                  style={{ display: 'block', padding: '8px', width: '250px', marginTop: '5px', marginRight: '10px', border: '1px solid var(--border)', borderRadius: '4px', background: 'var(--code-bg)', color: 'var(--text)' }} 
+                  style={{ padding: '8px', width: '250px', border: '1px solid var(--border)', borderRadius: '4px', background: 'var(--code-bg)', color: 'var(--text)', boxSizing: 'border-box' }} 
                 />
-              </label>
-              <button onClick={() => handleCopyText(shareData.link)} style={{ padding: '8px 12px', cursor: 'pointer', border: '1px solid var(--border)', borderRadius: '4px', background: 'var(--code-bg)', color: 'var(--text-h)' }}>Copy</button>
+                <button onClick={() => handleCopyText(shareData.link)} style={{ padding: '8px 12px', cursor: 'pointer', border: '1px solid var(--border)', borderRadius: '4px', background: 'var(--code-bg)', color: 'var(--text-h)', fontWeight: '500' }}>Copy</button>
+              </div>
             </div>
             
+            {/* Referral Code Flex Group */}
             <div>
-              <label htmlFor="referralCodeInput" style={{ display: 'block', fontWeight: 'bold', fontSize: '14px', marginBottom: '5px', color: 'var(--text-h)' }}>
+              <span style={{ display: 'block', fontWeight: 'bold', fontSize: '14px', marginBottom: '5px', color: 'var(--text-h)' }}>
                 Your Referral Code
+              </span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <input 
                   id="referralCodeInput"
                   name="referralCode"
                   type="text" 
                   readOnly 
                   value={shareData.code} 
-                  style={{ display: 'block', padding: '8px', width: '150px', marginTop: '5px', marginRight: '10px', border: '1px solid var(--border)', borderRadius: '4px', background: 'var(--code-bg)', color: 'var(--text)' }} 
+                  style={{ padding: '8px', width: '150px', border: '1px solid var(--border)', borderRadius: '4px', background: 'var(--code-bg)', color: 'var(--text)', boxSizing: 'border-box' }} 
                 />
-              </label>
-              <button onClick={() => handleCopyText(shareData.code)} style={{ padding: '8px 12px', cursor: 'pointer', border: '1px solid var(--border)', borderRadius: '4px', background: 'var(--code-bg)', color: 'var(--text-h)' }}>Copy</button>
+                <button onClick={() => handleCopyText(shareData.code)} style={{ padding: '8px 12px', cursor: 'pointer', border: '1px solid var(--border)', borderRadius: '4px', background: 'var(--code-bg)', color: 'var(--text-h)', fontWeight: '500' }}>Copy</button>
+              </div>
             </div>
+
           </div>
         </section>
 
