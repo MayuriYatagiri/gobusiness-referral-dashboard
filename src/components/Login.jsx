@@ -9,7 +9,6 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  // Route Guard check for existing sessions
   if (Cookies.get('jwt_token')) {
     return <Navigate to="/" replace />;
   }
@@ -56,26 +55,57 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-5 font-sans bg-gradient-to-br from-slate-50 to-slate-200 dark:from-slate-900 dark:to-slate-950 transition-colors duration-300">
-      <div className="w-full max-w-[420px] p-10 rounded-2xl shadow-xl transition-all duration-300 bg-white dark:bg-slate-900 border border-transparent dark:border-slate-800">
+    <div style={{
+      minHeight: '100vh',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      background: 'var(--code-bg)', 
+      fontFamily: 'var(--sans)',
+      padding: '20px',
+      boxSizing: 'border-box'
+    }}>
+      <div style={{
+        width: '100%',
+        maxWidth: '420px',
+        background: 'var(--bg)', 
+        padding: '40px',
+        borderRadius: '16px',
+        border: '1px solid var(--border)',
+        boxShadow: 'var(--shadow)',
+        boxSizing: 'border-box',
+        textAlign: 'left'
+      }}>
         
         {/* Brand Header */}
-        <div className="text-center mb-8">
-          <div className="w-12 height h-12 bg-blue-600 rounded-xl flex items-center justify-center text-white text-xl font-bold mx-auto mb-4 shadow-lg shadow-blue-600/20">
+        <div style={{ textAlign: 'center', marginBottom: '32px' }}>
+          <div style={{ 
+            width: '48px', 
+            height: '48px', 
+            background: 'var(--accent)', 
+            borderRadius: '12px', 
+            display: 'flex', 
+            alignItems: 'center', 
+            justifyContent: 'center', 
+            color: '#fff', 
+            fontSize: '20px', 
+            fontWeight: 'bold', 
+            margin: '0 auto 16px auto' 
+          }}>
             Go
           </div>
-          <h1 className="text-2xl font-bold tracking-tight mb-2 text-slate-900 dark:text-white transition-colors">
+          <h1 style={{ margin: '0 0 8px 0', fontSize: '26px', fontWeight: '700', color: 'var(--text-h)', letterSpacing: '-0.5px' }}>
             Welcome Back
           </h1>
-          <p className="text-sm text-slate-500 dark:text-slate-400 transition-colors">
+          <p style={{ color: 'var(--text)', margin: '0', fontSize: '14px' }}>
             Enter your credentials to access your dashboard
           </p>
         </div>
         
         {/* Sign In Form */}
-        <form onSubmit={handleSignIn} className="space-y-5">
-          <div>
-            <label htmlFor="email" className="block text-xs font-semibold tracking-wide uppercase mb-1.5 text-slate-600 dark:text-slate-400 transition-colors">
+        <form onSubmit={handleSignIn}>
+          <div style={{ marginBottom: '20px' }}>
+            <label htmlFor="email" style={{ display: 'block', fontWeight: '600', fontSize: '13px', color: 'var(--text-h)', marginBottom: '6px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
               Email Address
             </label>
             <input
@@ -85,14 +115,22 @@ const Login = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="w-full px-4 py-3 rounded-lg border outline-none text-sm font-medium transition-all duration-200
-                         bg-slate-50 border-slate-200 text-slate-900 placeholder-slate-400 focus:bg-white focus:border-blue-600 focus:ring-4 focus:ring-blue-600/10
-                         dark:bg-slate-800 dark:border-slate-700 dark:text-slate-100 dark:placeholder-slate-500 dark:focus:bg-slate-850 dark:focus:border-blue-500"
+              style={{
+                width: '100%',
+                padding: '12px 16px',
+                boxSizing: 'border-box',
+                border: '1px solid var(--border)',
+                borderRadius: '8px',
+                fontSize: '15px',
+                outline: 'none',
+                background: 'var(--bg)', 
+                color: 'var(--text-h)' 
+              }}
             />
           </div>
 
-          <div>
-            <label htmlFor="password" className="block text-xs font-semibold tracking-wide uppercase mb-1.5 text-slate-600 dark:text-slate-400 transition-colors">
+          <div style={{ marginBottom: '24px' }}>
+            <label htmlFor="password" style={{ display: 'block', fontWeight: '600', fontSize: '13px', color: 'var(--text-h)', marginBottom: '6px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
               Password
             </label>
             <input
@@ -102,27 +140,42 @@ const Login = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="w-full px-4 py-3 rounded-lg border outline-none text-sm font-medium transition-all duration-200
-                         bg-slate-50 border-slate-200 text-slate-900 placeholder-slate-400 focus:bg-white focus:border-blue-600 focus:ring-4 focus:ring-blue-600/10
-                         dark:bg-slate-800 dark:border-slate-700 dark:text-slate-100 dark:placeholder-slate-500 dark:focus:bg-slate-850 dark:focus:border-blue-500"
+              style={{
+                width: '100%',
+                padding: '12px 16px',
+                boxSizing: 'border-box',
+                border: '1px solid var(--border)',
+                borderRadius: '8px',
+                fontSize: '15px',
+                outline: 'none',
+                background: 'var(--bg)', 
+                color: 'var(--text-h)' 
+              }}
             />
           </div>
 
-          {/* Error Message Module */}
           {errorMessage && (
-            <div role="alert" className="flex items-center gap-2 p-3 text-sm font-medium border rounded-lg bg-red-50 border-red-200 text-red-700 dark:bg-red-950/30 dark:border-red-900/50 dark:text-red-400 transition-colors">
-              <span>⚠️</span> {errorMessage}
+            <div role="alert" style={{ display: 'flex', alignItems: 'center', gap: '8px', background: 'var(--accent-bg)', border: '1px solid var(--accent-border)', color: 'var(--accent)', padding: '12px', borderRadius: '8px', fontSize: '13px', marginBottom: '20px', fontWeight: '500' }}>
+              ⚠️ {errorMessage}
             </div>
           )}
 
-          {/* Primary Action Button */}
           <button 
             type="submit" 
             disabled={loading}
-            className="w-full py-3.5 px-4 font-semibold text-sm text-white rounded-lg shadow-md transition-all duration-200
-                       bg-blue-600 hover:bg-blue-700 active:bg-blue-800 hover:shadow-lg hover:shadow-blue-600/25
-                       disabled:bg-slate-300 disabled:text-slate-500 disabled:cursor-not-allowed disabled:shadow-none
-                       dark:bg-blue-600 dark:hover:bg-blue-500 dark:disabled:bg-slate-800 dark:disabled:text-slate-600"
+            style={{
+              width: '100%',
+              padding: '14px',
+              background: loading ? 'var(--border)' : 'var(--accent)',
+              color: '#fff',
+              border: 'none',
+              borderRadius: '8px',
+              cursor: loading ? 'not-allowed' : 'pointer',
+              fontWeight: '600',
+              fontSize: '15px',
+              boxShadow: 'var(--shadow)',
+              transition: 'all 0.2s ease'
+            }}
           >
             {loading ? 'Authenticating...' : 'Sign In to Dashboard'}
           </button>
